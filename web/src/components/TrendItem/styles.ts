@@ -4,6 +4,10 @@ export const Container = styled.div`
   display: flex;
   padding: 12px;
   border-bottom: 1px solid var(--light-gray);
+
+  &:hover{
+    background: var(--light-gray);
+  }
 `
 
 export const LeftContainer = styled.div`

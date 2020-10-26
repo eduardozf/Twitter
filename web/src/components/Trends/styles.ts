@@ -5,15 +5,14 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin: 8px 0;
+  margin: 12px 0;
 
   background: rgb(245,248,250);
   border-radius: 20px;
 `
 
 export const Title = styled.div`
-  padding: 10px;
-  margin: 4px 0;
+  padding: 15px 10px;
 
   font-weight: 900;
 
@@ -24,7 +23,7 @@ export const MoreBtn = styled.button`
   flex: 1;
 
   text-align: left;
-  text-indent: 20px;
+  text-indent: 14px;
 
   color: var(--blue);
   background: rgb(245,248,250);

@@ -1,16 +1,29 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-
   display: flex;
   align-items: center;
 
-  height: 45px;
+  z-index: 2;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 53px;
+  padding: 5px;
+
+  background: var(--white);
+`
+
+export const InputContainer = styled.div`
+  display: flex;
+  flex: 1;
+
   background: var(--light-gray);
 
   margin-top: 5px;
   margin-bottom: 8px;
-  padding: 5px;
 
   border-radius: 25px;
   :not(:focus-within){
