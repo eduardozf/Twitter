@@ -9,7 +9,8 @@ import {
   BsBookmark,
   RiFileList2Line,
   BsPerson,
-  CgMoreO
+  CgMoreO,
+  RiChatNewLine,
 } from 'react-icons/all';
 
 import { OptionsContainer, Logo, ButtonsContainer, LogoContainer } from './styles';
@@ -67,8 +68,9 @@ const NavBar: React.FC = () => {
           <span>Mais</span>
         </ButtonTransparent>
 
-        <ButtionFilled>
+        <ButtionFilled responsiveIcon>
           <span>Tweetar</span>
+          <RiChatNewLine style={{ display: 'none', fontSize: '20px' }} />
         </ButtionFilled>
       </ButtonsContainer>
 

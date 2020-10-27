@@ -11,4 +11,7 @@ export const Container = styled.div`
   ::-webkit-scrollbar{
     display: none;
   }
+  @media(max-width: 1000px){
+    display: none;
+  }
 `;

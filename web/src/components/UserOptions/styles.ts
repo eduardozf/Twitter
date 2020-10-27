@@ -16,6 +16,13 @@ export const Container = styled.div`
   &:hover{
     background: rgba(var(--rgblue), 0.1);
   }
+  @media (max-width: 1000px){
+    justify-content:center;
+    padding: 5px;
+  }
+  @media (max-height: 500px){
+    display: none;
+  }
 `
 
 export const UserAvatar = styled.img`
@@ -32,6 +39,9 @@ export const UsernameContainer = styled.div`
   line-height: 18px;
 
   margin: 0 10px;
+  @media (max-width: 1000px){
+    display: none;
+  }
 `
 
 export const Name = styled.h3`
@@ -49,4 +59,7 @@ export const IconContainer = styled.div`
   align-items: center;
 
   font-size: 22px;
+  @media (max-width: 1000px){
+    display: none;
+  }
 `

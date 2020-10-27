@@ -5,6 +5,10 @@ export const OptionsContainer = styled.div`
   padding: 0 10px;
 
   position: relative;
+  @media (max-width: 1000px){
+    width: 65px;
+    margin-right: 12px;
+  }
 `
 export const LogoContainer = styled.div`
   display:flex;
@@ -28,6 +32,11 @@ export const Logo = styled.a`
   &:hover{
     background: rgba(var(--rgblue),0.1);
   }
+
+  @media (max-width: 1000px){
+    height: 45px;
+    width: 45px;
+  }
 `
 export const ButtonsContainer = styled.div`
   display: flex;
@@ -35,5 +44,18 @@ export const ButtonsContainer = styled.div`
 
   button{
     margin: 8px 0;
+    @media (max-height: 800px){
+      margin: 4px 0;
+      svg{
+        font-size: 26px!important;
+      }
+    }
+    @media (max-height: 700px){
+      margin: 2px 0;
+      svg{
+        font-size: 22px!important;
+      }
+    }
   }
+
 `

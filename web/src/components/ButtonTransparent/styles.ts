@@ -5,7 +5,7 @@ export const Container = styled.button<Props>`
   display: flex;
   align-items: center;
 
-  background: none;
+  background: transparent;
   color: ${props => props.Active ? 'var(--blue)' : 'var(--black)'};
 
   font-size: 18px;
@@ -24,6 +24,14 @@ export const Container = styled.button<Props>`
   &:hover{
     background: rgba(var(--rgblue), 0.1);
     color: var(--blue);
+  }
+
+  @media (max-width: 1000px){
+    justify-content: center;
+    border-radius: 100%;
+    span{
+      display: none;
+    }
   }
 
 `
