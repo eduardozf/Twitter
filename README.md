@@ -1,21 +1,11 @@
 # Twitter
 Recreating twitter for study purposes 
 <!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-<!-- [![LinkedIn][linkedin-shield]][linkedin-url] -->
-
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -50,11 +40,6 @@ Recreating twitter for study purposes
 📌 [Licença](#licença)<br />
 📌 [Contato](#contato)<br />
 📌 [Agradecimentos](#agradecimentos)<br />
-<!--
-📌 [Como utilizar](#como-utilizar)
-📌 [Roadmap](#roadmap)
-📌 [Contribuições](#contribuições)
--->
 
 
 <!-- ABOUT THE PROJECT -->
@@ -74,7 +59,7 @@ Recreating twitter for study purposes
 <!-- GETTING STARTED -->
 ## Iniciando
 
-Para iniciar o projeto localmente você precisará seguir algumas intruções.
+Para iniciar o projeto localmente você precisará seguir algumas instruções.
 
 ### Pré-requisitos
 * NodeJS
@@ -94,7 +79,7 @@ cd web/
 # Instale todos os pacotes
 
 # Yarn
-yarn install
+yarn
 # Npm
 npm install
 
@@ -112,37 +97,6 @@ yarn build
 # Npm
 npm run build
 ```
-
-
-
-<!-- USAGE EXAMPLES 
-## Como utilizar
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
--->
-
-
-<!-- ROADMAP 
-## Roadmap
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
--->
-
-
-<!-- CONTRIBUTING 
-## Contribuições
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
--->
-
 
 <!-- LICENSE -->
 ## Licença
@@ -164,7 +118,6 @@ Eduardo Zotelli Ferraz - eduardozf1@gmail.com
 * [Best README Template](https://github.com/othneildrew/Best-README-Template)
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/eduardozf/Twitter.svg?style=flat-square
 [contributors-url]: https://github.com/eduardozf/Twitter/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/eduardozf/Twitter.svg?style=flat-square
@@ -175,6 +128,4 @@ Eduardo Zotelli Ferraz - eduardozf1@gmail.com
 [issues-url]: https://github.com/eduardozf/Twitter/issues
 [license-shield]: https://img.shields.io/github/license/eduardozf/Twitter.svg?style=flat-square
 [license-url]: https://github.com/eduardozf/Twitter/blob/master/LICENSE.txt
-<!-- [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555 -->
-<!-- [linkedin-url]: https://linkedin.com/in/othneildrew -->
 [product-screenshot]: images/MainPage.png
