@@ -10,7 +10,7 @@ Recreating twitter for study purposes
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/eduardozf/Twitter">
     <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.6cZtBQhyBG2EFyhpW2iVlAHaHa%26pid%3DApi&f=1" alt="Logo" width="80" height="80">
   </a>
 
