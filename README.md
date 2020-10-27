@@ -29,7 +29,9 @@ Recreating twitter for study purposes
   <p align="center">
     Um projeto para estudos!
     <br />
-    <a href="/">Ver demo</a>
+    ⚠ Projeto em andamento, portanto algumas funcionalidades estarão indisponíveis.
+    <br />
+    <a href="https://eduardozf.github.io/">Ver demo</a>
     ·
     <a href="https://github.com/eduardozf/Twitter/issues">Reportar Bug</a>
   </p>
@@ -45,9 +47,9 @@ Recreating twitter for study purposes
 📌 [Iniciando](#iniciando)<br />
 📌 [Pré-requisitos](#pré-requisitos) <br />
 📌 [Instalação](#instalação)<br />
-📌 [Como utilizar](#como-utilizar)<br />
-📌 [Roadmap](#roadmap)<br />
-📌 [Contribuições](#contribuições)<br />
+<!-- [Como utilizar](#como-utilizar)<br /> -->
+<!-- 📌 [Roadmap](#roadmap)<br /> -->
+<!-- 📌 [Contribuições](#contribuições)<br /> -->
 📌 [Licença](#licença)<br />
 📌 [Contato](#contato)<br />
 📌 [Agradecimentos](#agradecimentos)<br />
@@ -57,75 +59,78 @@ Recreating twitter for study purposes
 <!-- ABOUT THE PROJECT -->
 ## Sobre o projeto
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://eduardozf.github.io/)
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+Estou começando agora no desenvolvimento com o react e node, para treinar resolvi recriar algumas funcionalidade do Twitter.
 
 ### Tecnologias utilizadas
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
-
-
+* [React](https://reactjs.org/)
+* [Node](https://nodejs.org/en)
+* [Typescript](https://www.typescriptlang.org/)
+* [Express](https://expressjs.com/)
+* [Axios](https://www.axios.com/)
 
 <!-- GETTING STARTED -->
 ## Iniciando
 
-Para iniciar o projeto localmente você precisará seguir algumas intruções 
+Para iniciar o projeto localmente você precisará seguir algumas intruções.
 
 ### Pré-requisitos
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-```sh
-npm install npm@latest -g
-```
+* NodeJS
+* Yarn ou Npm
 
 ### Instalação
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
 ```sh
-git clone https://github.com/your_username_/Project-Name.git
-```
-3. Install NPM packages
-```sh
+### Apenas versão web disponível no momento
+
+# Clone o repositório
+git clone https://github.com/eduardozf/Twitter.git
+
+# Entrar na pasta do projeto web
+cd web/
+
+# Instale todos os pacotes
+
+# Yarn
+yarn install
+# Npm
 npm install
+
+# Ambiente de desenvolvimento
+
+# Yarn
+yarn dev
+# Npm
+npm run dev
+
+# Ambiente de Produção
+
+# Yarn
+yarn build
+# Npm
+npm run build
 ```
-4. Enter your API in `config.js`
-```JS
-const API_KEY = 'ENTER YOUR API';
-```
 
 
 
-<!-- USAGE EXAMPLES -->
+<!-- USAGE EXAMPLES 
 ## Como utilizar
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
+-->
 
 
-
-<!-- ROADMAP -->
+<!-- ROADMAP 
 ## Roadmap
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
+-->
 
 
-
-<!-- CONTRIBUTING -->
+<!-- CONTRIBUTING 
 ## Contribuições
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -135,23 +140,21 @@ Contributions are what make the open source community such an amazing place to b
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
+-->
 
 
 <!-- LICENSE -->
 ## Licença
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
+Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
 
 <!-- CONTACT -->
 ## Contato
 
 Eduardo Zotelli Ferraz - eduardozf1@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
+Link do projeto: [Twitter](https://github.com/eduardozf/Twitter)
+<br />
+Link da demonstração: [Demo](https://eduardozf.github.io/)
 
 
 <!-- ACKNOWLEDGEMENTS -->
