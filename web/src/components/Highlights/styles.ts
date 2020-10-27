@@ -6,4 +6,9 @@ export const Container = styled.div`
 
   width: 350px;
   flex-direction: column;
+
+  overflow-y: scroll;
+  ::-webkit-scrollbar{
+    display: none;
+  }
 `;
