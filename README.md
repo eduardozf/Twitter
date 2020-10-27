@@ -127,5 +127,5 @@ Eduardo Zotelli Ferraz - eduardozf1@gmail.com
 [issues-shield]: https://img.shields.io/github/issues/eduardozf/Twitter.svg?style=flat-square
 [issues-url]: https://github.com/eduardozf/Twitter/issues
 [license-shield]: https://img.shields.io/github/license/eduardozf/Twitter.svg?style=flat-square
-[license-url]: https://github.com/eduardozf/Twitter/blob/master/LICENSE.txt
+[license-url]: https://github.com/eduardozf/Twitter/blob/main/LICENSE.txt
 [product-screenshot]: images/MainPage.png
