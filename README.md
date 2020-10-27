@@ -47,13 +47,14 @@ Recreating twitter for study purposes
 📌 [Iniciando](#iniciando)<br />
 📌 [Pré-requisitos](#pré-requisitos) <br />
 📌 [Instalação](#instalação)<br />
-<!-- [Como utilizar](#como-utilizar)<br /> -->
-<!-- 📌 [Roadmap](#roadmap)<br /> -->
-<!-- 📌 [Contribuições](#contribuições)<br /> -->
 📌 [Licença](#licença)<br />
 📌 [Contato](#contato)<br />
 📌 [Agradecimentos](#agradecimentos)<br />
-
+<!--
+📌 [Como utilizar](#como-utilizar)
+📌 [Roadmap](#roadmap)
+📌 [Contribuições](#contribuições)
+-->
 
 
 <!-- ABOUT THE PROJECT -->
@@ -61,7 +62,7 @@ Recreating twitter for study purposes
 
 [![Product Name Screen Shot][product-screenshot]](https://eduardozf.github.io/)
 
-Estou começando agora no desenvolvimento com o react e node, para treinar resolvi recriar algumas funcionalidade do Twitter.
+💡 Estou começando agora no desenvolvimento com o react e node, para treinar resolvi recriar algumas funcionalidade do Twitter.
 
 ### Tecnologias utilizadas
 * [React](https://reactjs.org/)
@@ -152,9 +153,9 @@ Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
 
 Eduardo Zotelli Ferraz - eduardozf1@gmail.com
 
-Link do projeto: [Twitter](https://github.com/eduardozf/Twitter)
+🔗 Link do projeto: [Twitter](https://github.com/eduardozf/Twitter)
 <br />
-Link da demonstração: [Demo](https://eduardozf.github.io/)
+🔗 Link da demonstração: [Demo](https://eduardozf.github.io/)
 
 
 <!-- ACKNOWLEDGEMENTS -->
