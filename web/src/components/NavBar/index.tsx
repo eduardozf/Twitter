@@ -10,7 +10,7 @@ import {
   RiFileList2Line,
   BsPerson,
   CgMoreO,
-  RiChatNewLine,
+  GiFeather,
 } from 'react-icons/all';
 
 import { OptionsContainer, Logo, ButtonsContainer, LogoContainer } from './styles';
@@ -70,7 +70,7 @@ const NavBar: React.FC = () => {
 
         <ButtionFilled responsiveIcon>
           <span>Tweetar</span>
-          <RiChatNewLine style={{ display: 'none', fontSize: '20px' }} />
+          <GiFeather style={{ display: 'none', fontSize: '20px' }} />
         </ButtionFilled>
       </ButtonsContainer>
 

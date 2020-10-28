@@ -1,5 +1,8 @@
 import styled from 'styled-components';
+// Responsive Width value in px
+const rWidth = 1000;
 
+// Container
 export const Container = styled.div`
 
   margin-left: 25px;
@@ -11,7 +14,7 @@ export const Container = styled.div`
   ::-webkit-scrollbar{
     display: none;
   }
-  @media(max-width: 1000px){
+  @media(max-width: ${rWidth}px){
     display: none;
   }
 `;

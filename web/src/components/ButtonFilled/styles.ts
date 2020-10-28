@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components';
 import { IProps } from '.';
 
+// Responsive Width value in px
+const rWidth = 1300;
+
+// Container
 export const Container = styled.button<IProps>`
   display: flex;
   align-items: center;
@@ -30,10 +34,12 @@ export const Container = styled.button<IProps>`
   :hover{
     background: #078ee0;
   }
-  @media (max-width: 1000px){
+  @media (max-width: ${rWidth}px){
     ${props => props.responsiveIcon && css`
       border-radius: 50%;
-      padding: 10px;
+      height: 45px;
+      width: 45px;
+      padding: 12px;
       svg{
         display: block!important;
         }

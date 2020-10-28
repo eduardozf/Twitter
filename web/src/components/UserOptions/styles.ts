@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+// Responsive Width && Height values in px
+const rWidth = 1300;
+const rHeight = 500;
+
+// Container
 export const Container = styled.div`
   display: flex;
   align-items: center;
@@ -16,11 +21,11 @@ export const Container = styled.div`
   &:hover{
     background: rgba(var(--rgblue), 0.1);
   }
-  @media (max-width: 1000px){
+  @media (max-width: ${rWidth}px){
     justify-content:center;
     padding: 5px;
   }
-  @media (max-height: 500px){
+  @media (max-height: ${rHeight}px){
     display: none;
   }
 `
@@ -39,7 +44,7 @@ export const UsernameContainer = styled.div`
   line-height: 18px;
 
   margin: 0 10px;
-  @media (max-width: 1000px){
+  @media (max-width: ${rWidth}px){
     display: none;
   }
 `
@@ -59,7 +64,7 @@ export const IconContainer = styled.div`
   align-items: center;
 
   font-size: 22px;
-  @media (max-width: 1000px){
+  @media (max-width: ${rWidth}px){
     display: none;
   }
 `

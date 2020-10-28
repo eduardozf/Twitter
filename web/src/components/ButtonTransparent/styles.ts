@@ -1,6 +1,10 @@
 import styled from 'styled-components';
-import { Props } from '.'
+import { Props } from '.';
 
+// Responsive Width value in px
+const rWidth = 1300;
+
+// Container
 export const Container = styled.button<Props>`
   display: flex;
   align-items: center;
@@ -26,9 +30,9 @@ export const Container = styled.button<Props>`
     color: var(--blue);
   }
 
-  @media (max-width: 1000px){
+  @media (max-width: ${rWidth}px){
     justify-content: center;
-    border-radius: 100%;
+    border-radius: 50%;
     span{
       display: none;
     }
