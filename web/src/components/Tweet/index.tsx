@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Container, ProfileIcon, Info, Header, Content, Options, TweetOptions } from './styles';
-import { GoVerified, FiMoreHorizontal, BsChat, IoMdRepeat, FiHeart, AiOutlineToTop } from 'react-icons/all'
+import { GoVerified, FiMoreHorizontal, BsChat, IoMdRepeat, FiHeart, AiOutlineToTop } from 'react-icons/all';
 import ButtonTransparent from '../ButtonTransparent';
 
 interface Props {
