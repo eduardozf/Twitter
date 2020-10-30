@@ -12,13 +12,11 @@ export interface ITweet {
   retweets: object[];
   liked_by: object[];
 }
-
 interface ITweetContent {
-  description: string;
-  image: string;
-  video: string;
+  description: string | null;
+  image: string | null;
+  video: string | null;
 }
-
 interface ITweetOwner {
   id: string;
   name: string;
@@ -39,7 +37,7 @@ const Tweet: React.FC<Props> = ({ TweetData }) => {
           alt="Profile"
         />
       </div>
-      <div>
+      <div style={{ width: '100%' }}>
         <Info>
           <Header>
             <span style={{ color: "var(--black)", fontWeight: "bold" }}>{TweetData.owner.name}</span>
@@ -61,20 +59,29 @@ const Tweet: React.FC<Props> = ({ TweetData }) => {
           </ButtonTransparent>
         </Info>
         <Content>
-          <p>{TweetData.content.description}</p>
+          {(TweetData.content.description !== null) && (
+            <p>{TweetData.content.description}</p>
+          )}
+          {(TweetData.content.image !== null) && (
+            <div>
+              <a href="/#">
+                <img src={TweetData.content.image} alt="Tweet" />
+              </a>
+            </div>
+          )}
         </Content>
         <Options>
           <TweetOptions hoverColor="var(--blue)" >
             <BsChat style={{ fontSize: "14px" }} />
-            <span>{TweetData.comments.length}</span>
+            <span>{TweetData.comments.length > 0 && TweetData.comments.length}</span>
           </TweetOptions>
           <TweetOptions hoverColor="var(--green)">
             <IoMdRepeat style={{ fontSize: "14px", transform: "rotate(90deg)" }} />
-            <span>{TweetData.retweets.length}</span>
+            <span>{TweetData.retweets.length > 0 && TweetData.retweets.length}</span>
           </TweetOptions>
           <TweetOptions hoverColor="var(--pink)">
             <FiHeart style={{ fontSize: "14px" }} />
-            <span>{TweetData.liked_by.length}</span>
+            <span>{TweetData.liked_by.length > 0 && TweetData.liked_by.length}</span>
           </TweetOptions>
           <TweetOptions hoverColor="var(--blue)">
             <AiOutlineToTop style={{ fontSize: "18px" }} />

@@ -52,12 +52,41 @@ export const Header = styled.header`
 `
 
 export const Content = styled.div`
-margin-top: 2px;
-word-wrap: normal;
-p{
-  font-size: 15px;
-  text-align: justify;
-}
+  margin-top: 2px;
+  margin-right: 4px;
+  word-wrap: normal;
+  width: 100%;
+  p{
+    font-size: 15px;
+    text-align: justify;
+  }
+  div{
+    display: flex;
+    justify-content: center;
+
+    height: 285px;
+    max-height: 285px;
+
+    margin-top: 6px;
+    border-radius: 15px;
+    overflow: hidden;
+
+    border: 1px solid var(--light-gray);
+    a{
+      height: 100%;
+      width: 100%;
+      position: relative;
+      img{
+        width: 100%;
+        object-fit: contain;
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+      }
+    }
+  }
 `
 
 export const Options = styled.div`

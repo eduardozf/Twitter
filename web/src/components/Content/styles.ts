@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
 
-  width: 568px;
+  width: 597px;
   position: relative;
 
   overflow-y: scroll;
