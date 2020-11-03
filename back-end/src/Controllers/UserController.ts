@@ -1,43 +1,74 @@
-import { Request, Response } from 'express';
-import { v4 as uuid } from 'uuid';
-import { users } from '../Database/data';
+import { Router } from 'express';
+import { getRepository } from 'typeorm';
+import { Users } from '../database/models/Users'
+import CreateUser from '../services/CreateUserService';
+import FollowService from '../services/FollowService';
 
+const UsersRoute = Router();
 
-export default module.exports = {
-  all(req: Request, res: Response) {
-    res.json(users);
-  },
+UsersRoute.get('/', async (req, res) => {
+  try {
+    const repo = getRepository(Users);
 
-  get(req: Request, res: Response) {
+    res.json(await repo.find());
+  } catch (err) {
+    console.log('⛔', err.message);
+    res.status(400).json();
+  }
+})
+
+UsersRoute.get('/:id', async (req, res) => {
+  try {
     const { id } = req.params;
-    const getUser = users.find(item => item.id === id)
-    res.json(getUser);
-  },
+    const repo = getRepository(Users);
 
-  post(req: Request, res: Response) {
-    const { name, username, email, password } = req.body;
-    const id = uuid();
-
-    const user = {
-      id,
-      name,
-      username,
-      email,
-      password,
-      avatar: `https://api.hello-avatar.com/adorables/140/${username}`,
-      verified: false,
-      following: [{}],
-      followers: [{}]
-
-    }
-    users.push(user);
+    const getUser = await repo.findOne({
+      where: {
+        id,
+      }
+    }) as Users;
 
     res.json({
-      id: user.id,
-      name: user.name,
-      username: user.username,
-      email: user.email,
-      avatar: user.avatar
+      id: getUser.id,
+      screen_name: getUser.screen_name,
+      username: getUser.username,
+      email: getUser.email,
     });
+  } catch (err) {
+    console.log('⛔', err.message);
+    res.status(400).json();
   }
-}
+})
+
+UsersRoute.post('/new', async (req, res) => {
+  try {
+    const { screen_name, username, email, password } = req.body;
+
+    const createUser = new CreateUser();
+    const user = await createUser.execute({ screen_name, username, email, password });
+
+    user.password = '';
+    res.json(user);
+  } catch (err) {
+    console.log('⛔', err.message);
+    res.status(400).json(err.message);
+  }
+})
+
+UsersRoute.get('/followers/:id', async (req, res) => {
+  const { id } = req.params;
+  const followService = new FollowService();
+
+  res.json(await followService.followers({ id }));
+})
+
+UsersRoute.get('/follow', async (req, res) => {
+
+  res.json()
+})
+UsersRoute.delete('/follow', async (req, res) => {
+
+  res.json()
+})
+
+export default UsersRoute;

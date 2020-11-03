@@ -1,17 +1,16 @@
 import { Router } from 'express';
-import UserController from './Controllers/UserController';
-import TweetController from './Controllers/TweetController';
+import UsersRoute from './controllers/UserController';
+import TweetsRoute from './controllers/TweetController';
+import SessionController from './controllers/SessionController';
+import auth from './middlewares/auth';
 
 const routes = Router();
 
-// USERS ROUTES
-routes.get('/users', UserController.all);
-routes.get('/users/:id', UserController.get);
-routes.post('/users/new', UserController.post);
-// TWEETS ROUTES
-routes.get('/tweets', TweetController.all);
-routes.get('/tweets/:id', TweetController.get);
-routes.post('/tweets/new', TweetController.post);
+routes.use('/session', SessionController);
 
+routes.use(auth)
+
+routes.use('/users', UsersRoute);
+routes.use('/tweets', TweetsRoute);
 
 export default routes;

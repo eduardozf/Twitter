@@ -3,12 +3,12 @@ import api from '../../services/api';
 
 import { Container } from './styles';
 import NewTweet from '../NewTweet';
-import Tweet, { ITweet } from '../Tweet';
+import Tweet, { ITweetData } from '../Tweet';
 import TopBar from '../TopBar';
 
 
 const Content: React.FC = () => {
-  const [tweets, setTweets] = useState<ITweet[]>([]);
+  const [tweets, setTweets] = useState<ITweetData[]>([]);
 
   useEffect(() => {
     api.get('/tweets').then(res => {
@@ -21,8 +21,8 @@ const Content: React.FC = () => {
       <TopBar />
       <div>
         <NewTweet />
-        {tweets.map(tweet => {
-          return <Tweet key={tweet.id} TweetData={tweet} />
+        {tweets.map(tweetData => {
+          return <Tweet key={tweetData.content.tweet_id.id} TweetData={tweetData} />
         })}
       </div>
     </Container>
