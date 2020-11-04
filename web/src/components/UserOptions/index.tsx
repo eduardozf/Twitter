@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext'
 
 import { Container, UserAvatar, Name, Username, UsernameContainer, IconContainer } from './styles';
 import { FiChevronDown } from 'react-icons/fi'
 
 const UserOptions: React.FC = () => {
+  const { user, Logout } = useContext(AuthContext);
   return (
-    <Container>
-      <UserAvatar src="https://api.hello-avatar.com/adorables/140/11c445d5-bb49-43a9-96fc-8ffcbe448ca8" alt="" />
+    <Container onClick={() => { Logout() }}>
+      <UserAvatar src={user.avatar} alt="Profile" />
       <UsernameContainer>
-        <Name>Eduardo ZF</Name>
-        <Username>@Eduardo_ZF</Username>
+        <Name>{user.screen_name}</Name>
+        <Username>@{user.username}</Username>
       </UsernameContainer>
       <IconContainer>
         <FiChevronDown />

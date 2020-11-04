@@ -5,9 +5,22 @@ import { compare } from 'bcryptjs';
 import 'dotenv';
 import jwt from 'jsonwebtoken';
 
+interface IResponse {
+  user: IUser;
+  token: string;
+}
+interface IUser {
+  id: string;
+  screen_name: string;
+  username: string;
+  email: string;
+  avatar: string;
+  verified: boolean;
+}
+
 const SessionRoute = Router();
 
-SessionRoute.get('/', async (req, res) => {
+SessionRoute.post('/', async (req, res) => {
   const { email, password } = req.body;
 
   const repo = getRepository(Users);
@@ -21,11 +34,23 @@ SessionRoute.get('/', async (req, res) => {
     res.status(404).json('Invalid e-mail or password.');
   }
 
-  res.json({
+  const { id, screen_name, username, avatar, verified } = user;
+
+  const response: IResponse = {
+    user: {
+      id,
+      screen_name,
+      username,
+      email,
+      avatar,
+      verified
+    },
     token: jwt.sign({ userId: user.id }, process.env.APP_SECRET as string, {
       expiresIn: '1d'
     })
-  })
+  }
+
+  res.json(response)
 })
 
 

@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 import { Container, AvatarContainer, Avatar, DataContainer, Data, BtnsContainer, OptionsContainer } from './styles';
 import { AiOutlinePicture, RiFileGifLine, GoGraph, GrEmoji, FaRegCalendarAlt } from 'react-icons/all';
 import ButtonFilled from '../ButtonFilled';
 
 const NewTweet: React.FC = () => {
+  const { user } = useContext(AuthContext);
   return (
     <Container>
       <AvatarContainer>
-        <Avatar
-          src="https://api.hello-avatar.com/adorables/140/11c445d5-bb49-43a9-96fc-8ffcbe448ca8"
-          alt="Profile Picture" />
+        <Avatar src={user.avatar} alt="Profile" />
       </AvatarContainer>
       <DataContainer>
         <Data type="text" placeholder="O que está acontecendo?" />

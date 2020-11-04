@@ -1,13 +1,15 @@
 import React from 'react';
-import GlobalStyles from './styles/GlobalSyles';
-import Layout from './components/Layout';
+import Routes from './routes/'
 
-function App() {
+import AuthContext from './context/AuthContext'
+import GlobalStyles from './styles/GlobalSyles';
+
+const App: React.FC = () => {
   return (
-    <>
+    <AuthContext>
       <GlobalStyles />
-      <Layout />
-    </>
+      <Routes />
+    </AuthContext>
   );
 }
 

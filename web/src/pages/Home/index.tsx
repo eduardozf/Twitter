@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 
 import { Container } from './styles';
-import NewTweet from '../NewTweet';
-import Tweet, { ITweetData } from '../Tweet';
-import TopBar from '../TopBar';
+import NewTweet from '../../components/NewTweet';
+import Tweet, { ITweetData } from '../../components/Tweet';
+import TopBar from '../../components/TopBar';
 
 
 const Content: React.FC = () => {
