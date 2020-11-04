@@ -77,6 +77,7 @@ const AuthProvider: React.FC = ({ children }) => {
       Login,
       Logout,
     }}>
+      {console.log(authState.token)}
       {children}
     </AuthContext.Provider>
   )

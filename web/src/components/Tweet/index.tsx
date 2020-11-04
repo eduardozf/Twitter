@@ -32,6 +32,25 @@ interface Props {
   TweetData: ITweetData;
 }
 
+function calcDate(date: Date) {
+  const now = new Date().getTime();
+  const tweetDate = new Date(date).getTime()
+
+  const seconds = Math.round(Math.abs((now - tweetDate) / 1000))
+  const minutes = Math.round(Math.abs((now - tweetDate) / (60 * 1000)))
+  const hours = Math.round(Math.abs((now - tweetDate) / (60 * 60 * 1000)))
+  const days = Math.round(Math.abs((now - tweetDate) / (24 * 60 * 60 * 1000)))
+  if (days > 0) {
+    return (days.toString() + 'd');
+  } else if (hours > 0) {
+    return (hours.toString() + 'h');
+  } else if (minutes > 0) {
+    return (minutes.toString() + 'm');
+  } else if (seconds > 0) {
+    return (seconds.toString() + 's');
+  }
+}
+
 const Tweet: React.FC<Props> = ({ TweetData }) => {
   const { content } = TweetData;
   const { tweet_id: tweet } = content;
@@ -59,20 +78,20 @@ const Tweet: React.FC<Props> = ({ TweetData }) => {
             }
             <span>@{user.username}</span>
             <span> - </span>
-            <span>1 h</span>
+            <span>{calcDate(content.created_At)}</span>
           </Header>
           <ButtonTransparent>
             <FiMoreHorizontal />
           </ButtonTransparent>
         </Info>
         <Content>
-          {(TweetData.content.description !== null) && (
-            <p>{TweetData.content.description}</p>
+          {(content.description !== null) && (
+            <p>{content.description}</p>
           )}
-          {(TweetData.content.image !== null) && (
+          {(content.image !== null) && (
             <div>
               <a href="/#">
-                <img src={TweetData.content.image} alt="Tweet" />
+                <img src={content.image} alt="Tweet" />
               </a>
             </div>
           )}
