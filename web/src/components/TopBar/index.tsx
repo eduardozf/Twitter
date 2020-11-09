@@ -1,13 +1,11 @@
 import React from 'react';
 
 import { Container } from './styles';
-import { WiStars } from 'react-icons/wi';
 
-const TopBar: React.FC = () => {
+const TopBar: React.FC = ({ children }) => {
   return (
     <Container>
-      <h3>Tweets Mais Recentes</h3>
-      <WiStars style={{ fontSize: '38px' }} />
+      {children}
     </Container>
   );
 }

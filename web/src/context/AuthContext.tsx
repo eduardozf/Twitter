@@ -26,7 +26,7 @@ interface IUser {
   verified: boolean;
 }
 
-export const AuthContext = createContext<IContext>({} as IContext);
+export const AuthContext = createContext({} as IContext);
 
 const AuthProvider: React.FC = ({ children }) => {
   const [authState, setAuthState] = useState(() => {
@@ -77,7 +77,6 @@ const AuthProvider: React.FC = ({ children }) => {
       Login,
       Logout,
     }}>
-      {console.log(authState.token)}
       {children}
     </AuthContext.Provider>
   )

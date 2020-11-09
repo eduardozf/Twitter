@@ -22,11 +22,21 @@ export const DataContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
+  .TextArea{
+    margin-top: 14px;
+    margin-left: 8px;
+
+    font-size: 18px;
+    resize: none;
+  }
 `
 
-export const Data = styled.input`
+export const Data = styled.textarea`
   flex: 1;
   font-size: 18px;
+
+  overflow: hidden;
+  resize: none;
 
   margin-top: 14px;
 `

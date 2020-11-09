@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { Container, ProfileIcon, Info, Header, Content, Options, TweetOptions } from './styles';
 import { GoVerified, FiMoreHorizontal, BsChat, IoMdRepeat, FiHeart, AiOutlineToTop } from 'react-icons/all';
 import ButtonTransparent from '../ButtonTransparent';
+import { contentContext } from '../TweetsList'
 
 export interface ITweetData {
   content: ITweetContent;
@@ -13,7 +14,7 @@ interface ITweetContent {
   image: string | null;
   video: string | null;
   created_At: Date;
-  tweet_id: ITweet;
+  tweet: ITweet;
 }
 interface ITweet {
   id: string;
@@ -30,6 +31,7 @@ interface ITweetUser {
 
 interface Props {
   TweetData: ITweetData;
+  isMine: boolean;
 }
 
 function calcDate(date: Date) {
@@ -41,20 +43,22 @@ function calcDate(date: Date) {
   const hours = Math.round(Math.abs((now - tweetDate) / (60 * 60 * 1000)))
   const days = Math.round(Math.abs((now - tweetDate) / (24 * 60 * 60 * 1000)))
   if (days > 0) {
-    return (days.toString() + 'd');
+    return (new Date(tweetDate).toLocaleDateString());
   } else if (hours > 0) {
-    return (hours.toString() + 'h');
+    return (hours.toString() + ' h');
   } else if (minutes > 0) {
-    return (minutes.toString() + 'm');
+    return (minutes.toString() + ' min');
   } else if (seconds > 0) {
     return (seconds.toString() + 's');
   }
 }
 
-const Tweet: React.FC<Props> = ({ TweetData }) => {
+const Tweet: React.FC<Props> = ({ TweetData, isMine }) => {
   const { content } = TweetData;
-  const { tweet_id: tweet } = content;
+  const { tweet } = content;
   const { user_id: user } = tweet;
+  const { handleDeleteTweet } = useContext(contentContext);
+
   return (
     <Container>
       <div>
@@ -80,7 +84,7 @@ const Tweet: React.FC<Props> = ({ TweetData }) => {
             <span> - </span>
             <span>{calcDate(content.created_At)}</span>
           </Header>
-          <ButtonTransparent>
+          <ButtonTransparent onClick={() => handleDeleteTweet(TweetData.content.tweet.id)}>
             <FiMoreHorizontal />
           </ButtonTransparent>
         </Info>

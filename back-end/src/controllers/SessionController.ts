@@ -49,7 +49,6 @@ SessionRoute.post('/', async (req, res) => {
       expiresIn: '1d'
     })
   }
-
   res.json(response)
 })
 

@@ -1,19 +1,52 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import { contentContext } from '../TweetsList'
+import api from '../../services/api';
 
-import { Container, AvatarContainer, Avatar, DataContainer, Data, BtnsContainer, OptionsContainer } from './styles';
+import { Container, AvatarContainer, Avatar, DataContainer, BtnsContainer, OptionsContainer } from './styles';
 import { AiOutlinePicture, RiFileGifLine, GoGraph, GrEmoji, FaRegCalendarAlt } from 'react-icons/all';
 import ButtonFilled from '../ButtonFilled';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
+interface IContent {
+  description: string | null;
+  image: string | null;
+  video: string | null;
+}
 const NewTweet: React.FC = () => {
   const { user } = useContext(AuthContext);
+  const [textLenght, setTextLenght] = useState(0);
+  const textareaRef = useRef({} as any);
+  const { handleNewTweet } = useContext(contentContext);
+
+  function handleOnChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    try {
+      const textLength = e.target.value.replace(/\s/g, '').length;
+      setTextLenght(textLength);
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+
+  async function handlePostTweet(content: any) {
+    await api.post('/tweets/new', { content }).then((response) => {
+      handleNewTweet(response.data);
+    })
+  }
+
   return (
     <Container>
       <AvatarContainer>
         <Avatar src={user.avatar} alt="Profile" />
       </AvatarContainer>
       <DataContainer>
-        <Data type="text" placeholder="O que está acontecendo?" />
+        <TextareaAutosize
+          ref={textareaRef}
+          aria-label="empty textarea"
+          placeholder="O que está acontecendo?"
+          className="TextArea"
+          onChange={(e) => handleOnChange(e)}
+        />
         <BtnsContainer>
           <OptionsContainer>
             <button>
@@ -32,7 +65,10 @@ const NewTweet: React.FC = () => {
               <FaRegCalendarAlt />
             </button>
           </OptionsContainer>
-          <ButtonFilled Disable>
+          <ButtonFilled
+            Disable={textLenght <= 0}
+            onClick={() => { handlePostTweet({ description: textareaRef.current.value, image: null, video: null }) }}
+          >
             <span>Tweetar</span>
           </ButtonFilled>
         </BtnsContainer>

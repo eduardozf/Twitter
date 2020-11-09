@@ -6,9 +6,10 @@ import NavBar from '../components/NavBar';
 import Hightlights from '../components/Highlights';
 
 import Login from '../pages/Login';
-import Home from '../pages/Home';
+import Content from '../components/Content';
 import Layout from '../pages/Layout';
 import NotFound from '../pages/NotFound';
+import Profile from '../pages/Profile';
 
 interface IPrivateProps {
   component: any;
@@ -33,12 +34,20 @@ const Routes: React.FC = () => {
         <PrivateRoute isAuthenticated={isAuthenticated} path='/' exact component={() => (
           <Layout>
             <NavBar />
-            <Home />
+            <Content />
             <Hightlights />
           </Layout>
         )} />
 
         <Route path="/login" exact component={Login} />
+
+        <PrivateRoute isAuthenticated={isAuthenticated} path='/' component={() => (
+          <Layout>
+            <NavBar />
+            <Profile />
+            <Hightlights />
+          </Layout>
+        )} />
         <Route exact component={NotFound} />
       </Switch>
     </BrowserRouter>

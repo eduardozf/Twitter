@@ -1,12 +1,11 @@
 import { Router } from 'express';
-import CreateTweet from '../services/CreateTweetService';
-import FindTweet from '../services/FindTweetWithContent';
+import TweetService from '../services/TweetService';
 
 const TweetsRoute = Router();
 
-TweetsRoute.get('/', async (req, res) => {
-  const findTweet = new FindTweet();
-  const allTweets = await findTweet.findAll();
+TweetsRoute.get('/', async (_, res) => {
+  const tweetService = new TweetService();
+  const allTweets = await tweetService.findAll();
 
   res.json(allTweets);
 })
@@ -14,8 +13,8 @@ TweetsRoute.get('/', async (req, res) => {
 TweetsRoute.get('/:id', async (req, res) => {
   const { id } = req.params;
 
-  const findTweet = new FindTweet();
-  const tweet = await findTweet.execute({ tweet_Id: id })
+  const tweetService = new TweetService();
+  const tweet = await tweetService.findOne({ tweet_Id: id })
   res.json(tweet);
 })
 
@@ -24,14 +23,22 @@ TweetsRoute.post('/new', async (req, res) => {
     const { content } = req.body;
     const userId = req.userId;
 
-    const createTweet = new CreateTweet();
-    const tweet = await createTweet.execute({ userId, tweetContent: content });
+    const tweetService = new TweetService();
+    const tweet = await tweetService.create({ userId, tweetContent: content });
 
     res.json(tweet);
   } catch (err) {
     console.log('⛔', err.message);
     res.status(400).json(err.message);
   }
+})
+
+TweetsRoute.delete('/delete/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const tweetService = new TweetService();
+  const tweet = await tweetService.delete({ tweet_Id: id })
+  res.status(204).json();
 })
 
 export default TweetsRoute;

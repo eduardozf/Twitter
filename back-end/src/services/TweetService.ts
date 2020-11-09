@@ -2,6 +2,7 @@ import { getRepository } from 'typeorm';
 import { Tweets } from '../database/models/Tweets'
 import { Contents } from '../database/models/Contents'
 import { Users } from '../database/models/Users'
+import CreateContent from '../services/CreateContentService';
 
 interface IRequest {
   tweet_Id: string;
@@ -15,7 +16,7 @@ interface IContentResponse {
   image: string | null;
   video: string | null;
   created_At: Date;
-  tweet_id: ITweet;
+  tweet: ITweet;
 }
 interface ITweet {
   id: string;
@@ -30,9 +31,57 @@ interface IUser {
   verified: boolean,
 }
 
+interface ICreateRequest {
+  userId: string;
+  tweetContent: ICreateContent;
+}
+interface ICreateContent {
+  description?: string | null;
+  image?: string | null;
+  video?: string | null;
+}
 
 class FindTweetContent {
-  public async execute({ tweet_Id }: IRequest): Promise<IResponse> {
+
+  public async create({ userId, tweetContent }: ICreateRequest): Promise<IResponse> {
+    const { description, image, video } = tweetContent;
+    const repoTweets = getRepository(Tweets);
+    const repoUsers = getRepository(Users);
+
+    const user = await repoUsers.findOne({ where: { id: userId } }) as Users;
+    const tweet = await repoTweets.create({ user_id: user });
+    await repoTweets.save(tweet);
+
+    const createContent = new CreateContent();
+    const content = await createContent.execute({ tweet_id: tweet, description, image, video })
+
+    const { screen_name, username, avatar, verified } = user;
+
+    const response: IResponse = {
+      content: {
+        id: content.id,
+        description: content.description,
+        image: content.image,
+        video: content.video,
+        created_At: content.created_At,
+        tweet: {
+          id: tweet.id,
+          created_At: tweet.created_At,
+          user_id: {
+            id: user.id,
+            screen_name,
+            username,
+            avatar,
+            verified,
+          }
+        }
+      }
+    }
+
+    return response;
+  }
+
+  public async findOne({ tweet_Id }: IRequest): Promise<IResponse> {
     const contentRepo = getRepository(Contents);
     const content = await contentRepo.findOne({ where: { tweet_id: tweet_Id } }) as Contents;
 
@@ -50,7 +99,7 @@ class FindTweetContent {
         image,
         video,
         created_At: content.created_At,
-        tweet_id: {
+        tweet: {
           id: tweet.id,
           created_At: tweet.created_At,
           user_id: {
@@ -90,7 +139,7 @@ class FindTweetContent {
               image,
               video,
               created_At: content.created_At,
-              tweet_id: {
+              tweet: {
                 id: tweet.id,
                 created_At: tweet.created_At,
                 user_id: {
@@ -116,6 +165,14 @@ class FindTweetContent {
       }
     });
     return allContents;
+  }
+
+  public async delete({ tweet_Id }: IRequest): Promise<void> {
+    const repo = getRepository(Tweets);
+    const tweet = await repo.findOne({ where: { id: tweet_Id } }) as Tweets
+    repo.remove(tweet);
+
+    return;
   }
 }
 
