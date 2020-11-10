@@ -1,5 +1,3 @@
-# Twitter
-Recreating twitter for study purposes 
 <!-- PROJECT SHIELDS -->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
