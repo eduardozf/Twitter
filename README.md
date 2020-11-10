@@ -66,16 +66,29 @@ Para iniciar o projeto localmente você precisará seguir algumas instruções.
 ### Instalação
 
 ```sh
-### Apenas versão web disponível no momento
-
 # Clone o repositório
 git clone https://github.com/eduardozf/Twitter.git
+
+1. Criar instancia postgres-sql
+2. Criar database twitter
+
+# Path ./back-end/
+3. Instalar pacotes
+# Yarn
+yarn
+# Npm
+npm install
+
+# Path ./back-end/ormconfig.json
+4. Alterar Porta/Usuário/Senha do typeorm conforme o banco criado acima
+
+5. Implementar migration no banco
+yarn typeorm migration:run
 
 # Entrar na pasta do projeto web
 cd web/
 
 # Instale todos os pacotes
-
 # Yarn
 yarn
 # Npm
@@ -83,17 +96,10 @@ npm install
 
 # Ambiente de desenvolvimento
 
-# Yarn
+## Back-end
 yarn dev
-# Npm
-npm run dev
-
-# Ambiente de Produção
-
-# Yarn
-yarn build
-# Npm
-npm run build
+## Web
+yarn start
 ```
 
 <!-- LICENSE -->
