@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 
-import { Container } from './styles';
+import { Container, LoginContainer, Header, Form, Input, OptionsContainer, LoginButton, Footer } from './styles';
+import { FaTwitter } from 'react-icons/fa';
 
 const Login: React.FC = () => {
   const { Login } = useContext(AuthContext);
@@ -11,10 +12,28 @@ const Login: React.FC = () => {
     password: '1234'
   }
 
+  function handleLogin(e: React.FormEvent, credentials: any){
+    e.preventDefault();
+    Login(credentials)
+  }
+
   return (
     <Container>
-      <h1>Login</h1>
-      <button onClick={() => { Login(credentials) }}>LOGIN</button>
+      <LoginContainer>
+      <Header>Log in to Twitter</Header>
+      <Form onSubmit={(e) => { handleLogin(e, credentials)}}>
+        <FaTwitter style={{color: 'var(--blue)', fontSize: '22px', marginBottom: '10px'}}/>
+        <Input type="text" placeholder="Email"/>
+        <Input type="password" placeholder="Password"/>
+        <OptionsContainer>
+          <input type="checkbox" name="" id=""/>
+          <span>Remember me</span>
+          <a href="/">Forgot password?</a>
+        </OptionsContainer>
+        <LoginButton type="submit"><span>Log In</span></LoginButton>
+      </Form>
+      <Footer>Don't have an account? <a href="/">Sign up</a></Footer>
+      </LoginContainer>
     </Container>
   )
 }

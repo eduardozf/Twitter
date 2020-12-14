@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { Props } from '.';
+import { ButtonProps } from '.';
 
 // Responsive Width value in px
 const rWidth = 1300;
 
 // Container
-export const Container = styled.button<Props>`
+export const Container = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
 

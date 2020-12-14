@@ -1,11 +1,10 @@
 import styled, { css } from 'styled-components';
-import { IProps } from '.';
 
 // Responsive Width value in px
 const rWidth = 1300;
 
 // Container
-export const Container = styled.button<IProps>`
+export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,7 +34,7 @@ export const Container = styled.button<IProps>`
     background: #078ee0;
   }
   @media (max-width: ${rWidth}px){
-    ${props => props.responsiveIcon && css`
+    ${(props: any) => props.responsiveIcon && css`
       border-radius: 50%;
       height: 45px;
       width: 45px;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.button`
+export const Button = styled.button`
   display: flex;
   flex: 1;
   cursor: pointer;

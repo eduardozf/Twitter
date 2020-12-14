@@ -66,7 +66,7 @@ const NewTweet: React.FC = () => {
             </button>
           </OptionsContainer>
           <ButtonFilled
-            Disable={textLenght <= 0}
+            disabled={textLenght <= 0}
             onClick={() => { handlePostTweet({ description: textareaRef.current.value, image: null, video: null }) }}
           >
             <span>Tweetar</span>

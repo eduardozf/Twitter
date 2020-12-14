@@ -1,21 +1,15 @@
-import React from 'react';
+import React, {ButtonHTMLAttributes} from 'react';
 
-import { Container } from './styles';
-
-export interface IProps {
-  children?: React.ReactNode;
-  Disable?: boolean;
+import { Button } from './styles';
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
   responsiveIcon?: boolean;
-  [x: string]: any;
 }
 
-
-
-const ButtonFilled: React.FC<IProps> = ({ children, Disable, responsiveIcon, ...rest }) => {
+const ButtonFilled: React.FC<ButtonProps> = ({ children, ...rest }) => {
   return (
-    <Container disabled={Disable} responsiveIcon={responsiveIcon} {...rest}>
+    <Button {...rest}>
       {children}
-    </Container>
+    </Button>
   )
 }
 

@@ -1,14 +1,13 @@
-import React from 'react';
+import React, {ButtonHTMLAttributes} from 'react';
 
 import { Container } from './styles';
 
-export interface Props {
-  children: React.ReactNode;
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
   Active?: boolean;
-  [x: string]: any;
 }
 
-const ButtonTransparent: React.FC<Props> = ({ children, Active, ...rest }) => {
+
+const ButtonTransparent: React.FC<ButtonProps> = ({ children, Active, ...rest }) => {
   return (
     <Container Active={Active} {...rest}>
       {children}

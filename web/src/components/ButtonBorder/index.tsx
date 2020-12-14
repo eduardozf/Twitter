@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {ButtonHTMLAttributes} from 'react';
 
-import { Container } from './styles';
+import { Button } from './styles';
 
-const ButtonBorder: React.FC = ({ children }) => {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
+
+const ButtonBorder: React.FC<ButtonProps> = ({ children, ...rest }) => {
   return (
-    <Container>
+    <Button {...rest}>
       {children}
-    </Container>
+    </Button>
   )
 }
 
