@@ -25,6 +25,7 @@ export const UserImage = styled.Image`
 
 export const NameContainer = styled.View`
   flex-direction: row;
+  max-width: 100%;
 `;
 
 export const ScreenName = styled.Text`
@@ -41,11 +42,16 @@ export const ContentText = styled.Text`
   font-size: 18px;
   max-width: 100%;
 `;
+export const ContentImage = styled.Image`
+  height: 300px;
+  border-radius: 10px;
+`;
 
 export const InteractiveContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin-right: 40px;
+  margin-right: 70px;
+  margin-top: 10px;
 `;
 
 export const InteractItem = styled.TouchableOpacity`

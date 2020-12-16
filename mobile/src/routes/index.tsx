@@ -2,18 +2,17 @@ import React from 'react';
 import { Image, TouchableOpacity } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import Icon from 'react-native-vector-icons/Feather';
 import Login from '../pages/Login';
 import Main from '../pages/Main';
 
 import LogoImg from '../assets/logo.png';
-import MenuImg from '../assets/menu.png';
-import StarsImg from '../assets/starts.png';
 
 const NavRoutes = createStackNavigator();
 
 const Routes: React.FC = () => {
   return (
-    <NavRoutes.Navigator initialRouteName="Main">
+    <NavRoutes.Navigator>
       <NavRoutes.Screen
         name="Login"
         component={Login}
@@ -23,6 +22,7 @@ const Routes: React.FC = () => {
           headerStyle: {
             backgroundColor: '#1DA1F2',
           },
+          headerBackAccessibilityLabel: 'aaa',
         }}
       />
 
@@ -38,7 +38,7 @@ const Routes: React.FC = () => {
           },
           headerLeft: () => (
             <TouchableOpacity style={{ marginLeft: 15 }}>
-              <Image source={MenuImg} style={{ width: 20, height: 16 }} />
+              <Icon name="menu" size={26} color="#1DA1F2" />
             </TouchableOpacity>
           ),
           headerTitle: () => (
@@ -46,7 +46,7 @@ const Routes: React.FC = () => {
           ),
           headerRight: () => (
             <TouchableOpacity style={{ marginRight: 15 }}>
-              <Image source={StarsImg} style={{ width: 28, height: 28 }} />
+              <Icon name="sliders" size={22} color="#1DA1F2" />
             </TouchableOpacity>
           ),
         }}

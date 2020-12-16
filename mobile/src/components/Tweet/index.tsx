@@ -10,6 +10,7 @@ import {
   Content,
   NameContainer,
   ContentText,
+  ContentImage,
   InteractiveContainer,
   InteractItem,
 } from './styles';
@@ -65,39 +66,34 @@ function calcDate(date: Date) {
   }
 }
 
-const Image = '';
-
-const Tweet: React.FC /* <Props> */ = (/* { TweetData, isMine } */) => {
-  /* const { content } = TweetData;
+const Tweet: React.FC<Props> = ({ TweetData, isMine }) => {
+  const { content } = TweetData;
   const { tweet } = content;
-  const { user_id: user } = tweet; */
+  const { user_id: user } = tweet;
   return (
     <Container>
       <View>
         <UserImage
           source={{
-            uri: 'https://api.hello-avatar.com/adorables/140/12312311231',
+            uri: user.avatar,
           }}
         />
       </View>
       <Content>
         <NameContainer>
-          <ScreenName>Eduardo ZF</ScreenName>
-          <Span>@Eduard_ZF</Span>
-          <Span>- 17min</Span>
+          <ScreenName>{user.screen_name}</ScreenName>
+          <Span>{`@${user.username}`}</Span>
+          <Span>{`- ${calcDate(content.created_At)}`}</Span>
+          {isMine && <Icon name="chevron-down" size={18} color="#627577" />}
         </NameContainer>
-        <ContentText>
-          Lorem Ipsum é simplesmente uma simulação de texto da indústria
-          tipográfica e de impressos, e vem sendo utilizado desde o século XVI,
-          quando um impressor desconhecido pegou uma bandeja de tipos e os
-          embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum
-          sobreviveu não só a cinco séculos, como também ao salto para a
-          editoração eletrônica, permanecendo essencialmente inalterado. Se
-          popularizou na década de 60, quando a Letraset lançou decalques
-          contendo passagens de Lorem Ipsum, e mais recentemente quando passou a
-          ser integrado a softwares de editoração eletrônica como Aldus
-          PageMaker.
-        </ContentText>
+
+        {content.description !== null && (
+          <ContentText>{content.description}</ContentText>
+        )}
+        {content.image !== null && (
+          <ContentImage source={{ uri: content.image }} />
+        )}
+
         <InteractiveContainer>
           <InteractItem>
             <Icon name="message-circle" size={18} color="#627577" />

@@ -19,7 +19,7 @@ export const Container = styled.View`
   transform: translate(0, -80px);
 `;
 
-export const Form = styled.View`
+export const FormContainer = styled.View`
   flex-direction: column;
   width: 60%;
 `;
@@ -29,14 +29,6 @@ export const Span = styled.Text`
   color: #777;
 `;
 
-export const Input = styled.TextInput`
-  display: flex;
-
-  border: 1px solid #aaa;
-  margin: 4px 0;
-
-  height: 40px;
-`;
 export const Header = styled.View`
   margin-bottom: 6px;
 `;

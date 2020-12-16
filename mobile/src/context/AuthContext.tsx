@@ -1,13 +1,13 @@
-import React, { useState, useCallback, createContext } from 'react';
-
+import React, { createContext, useState, useCallback, useEffect } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import api from '../services/api';
 
 interface IContext {
   isAuthenticated: boolean;
   user: IUser;
-  Login(credentials: ILoginCrendentials): Promise<any>;
-  Logout(): Promise<any>;
+  // eslint-disable-next-line no-unused-vars
+  Login(credentials: ILoginCrendentials): Promise<void>;
+  Logout(): Promise<void>;
 }
 interface ILoginCrendentials {
   email: string;
@@ -31,29 +31,43 @@ interface IUser {
 export const AuthContext = createContext({} as IContext);
 
 const AuthProvider: React.FC = ({ children }) => {
-  const [authState, setAuthState] = useState(() => {
-    const token = AsyncStorage.getItem('@Twitter:token');
-    const user = AsyncStorage.getItem('@Twitter:user');
+  const [authState, setAuthState] = useState<IAuthState>({} as IAuthState);
 
-    if (token && user) {
-      api.defaults.headers.common.Authorization = token;
-      return { token, user, isAuthenticated: true };
+  useEffect(() => {
+    async function loadStorageData(): Promise<void> {
+      const [token, user] = await AsyncStorage.multiGet([
+        '@Twitter:token',
+        '@Twitter:user',
+      ]);
+
+      if (token[1] && user[1]) {
+        api.defaults.headers.common.Authorization = token;
+        setAuthState({
+          token: token[1],
+          user: JSON.parse(user[1]),
+          isAuthenticated: true,
+        } as IAuthState);
+      }
     }
-    return {} as IAuthState;
-  });
+    loadStorageData();
+  }, []);
 
+  // Handle LogIn
   const Login = useCallback(async ({ email, password }) => {
     // Get session token
     const response = await await api.post('session', { email, password });
     // Check response status
     if (response.status !== 200) throw new Error(response.data);
-    const { user, token } = response.data;
-    // Set axios default header
+    // Get user, token of new session response
+    const { user, token } = response.data as IAuthState;
+    // Set axios Authorization default header
     api.defaults.headers.common.Authorization = `Bearer ${token}`;
-    // Save data on browser local storage
-    AsyncStorage.setItem('@Twitter:token', `Bearer ${token}`);
-    AsyncStorage.setItem('@Twitter:user', JSON.stringify(user));
-    // Set States
+    // Save data on mobile async storage
+    await AsyncStorage.multiSet([
+      ['@Twitter:token', `Bearer ${token}`],
+      ['@Twitter:user', JSON.stringify(user)],
+    ]);
+    // Set Auth States
     setAuthState({
       token,
       user,
@@ -61,10 +75,13 @@ const AuthProvider: React.FC = ({ children }) => {
     });
   }, []);
 
+  // Handle Logout
   const Logout = useCallback(async () => {
-    AsyncStorage.removeItem('@Twitter:token');
-    AsyncStorage.removeItem('@Twitter:user');
+    // Remove user information from AsyncStorage
+    await AsyncStorage.multiRemove(['@Twitter:token', '@Twitter:user']);
+    // Clear the state
     setAuthState({} as IAuthState);
+    // Clear Authorization header
     api.defaults.headers.common.Authorization = '';
   }, []);
 
@@ -72,7 +89,7 @@ const AuthProvider: React.FC = ({ children }) => {
     <AuthContext.Provider
       value={{
         isAuthenticated: authState.isAuthenticated,
-        user: authState.user,
+        user: authState.user as IUser,
         Login,
         Logout,
       }}
