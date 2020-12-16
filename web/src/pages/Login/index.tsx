@@ -12,27 +12,27 @@ const Login: React.FC = () => {
     password: '1234'
   }
 
-  function handleLogin(e: React.FormEvent, credentials: any){
+  function handleLogin(e: React.FormEvent, credentials: any) {
     e.preventDefault();
-    Login(credentials)
+    Login(credentials);
   }
 
   return (
     <Container>
       <LoginContainer>
-      <Header>Log in to Twitter</Header>
-      <Form onSubmit={(e) => { handleLogin(e, credentials)}}>
-        <FaTwitter style={{color: 'var(--blue)', fontSize: '22px', marginBottom: '10px'}}/>
-        <Input type="text" placeholder="Email"/>
-        <Input type="password" placeholder="Password"/>
-        <OptionsContainer>
-          <input type="checkbox" name="" id=""/>
-          <span>Remember me</span>
-          <a href="/">Forgot password?</a>
-        </OptionsContainer>
-        <LoginButton type="submit"><span>Log In</span></LoginButton>
-      </Form>
-      <Footer>Don't have an account? <a href="/">Sign up</a></Footer>
+        <Header>Log in to Twitter</Header>
+        <Form onSubmit={(e) => { handleLogin(e, credentials) }}>
+          <FaTwitter style={{ color: 'var(--blue)', fontSize: '22px', marginBottom: '10px' }} />
+          <Input type="text" placeholder="Email" />
+          <Input type="password" placeholder="Password" />
+          <OptionsContainer>
+            <input type="checkbox" name="" id="" />
+            <span>Remember me</span>
+            <a href="/">Forgot password?</a>
+          </OptionsContainer>
+          <LoginButton type="submit">Log In</LoginButton>
+        </Form>
+        <Footer>Don't have an account? <a href="/">Sign up</a></Footer>
       </LoginContainer>
     </Container>
   )

@@ -68,7 +68,7 @@ export const LoginButton = styled.button`
   font-weight: 700;
   font-size: 16px;
 
-  border-radius: 20px;
+  border-radius: 5px;
   width: 100%;
 `
 
