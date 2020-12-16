@@ -24,7 +24,7 @@ export default (req: Request, res: Response, next: NextFunction) => {
     req.userId = userId;
     return next();
   } catch {
-    throw new Error('Invalid Token!');
+    return res.status(401).json('Invalid Token!');
   }
 
 }
