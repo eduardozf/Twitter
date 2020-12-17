@@ -8,11 +8,6 @@ import { AiOutlinePicture, RiFileGifLine, GoGraph, GrEmoji, FaRegCalendarAlt } f
 import ButtonFilled from '../ButtonFilled';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
-interface IContent {
-  description: string | null;
-  image: string | null;
-  video: string | null;
-}
 const NewTweet: React.FC = () => {
   const { user } = useContext(AuthContext);
   const [textLenght, setTextLenght] = useState(0);

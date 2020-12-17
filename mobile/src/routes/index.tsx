@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Feather';
 import Login from '../pages/Login';
 import Main from '../pages/Main';
+import NewTweet from '../pages/NewTweet';
 
 import LogoImg from '../assets/logo.png';
 
@@ -49,6 +50,14 @@ const Routes: React.FC = () => {
               <Icon name="sliders" size={22} color="#1DA1F2" />
             </TouchableOpacity>
           ),
+        }}
+      />
+
+      <NavRoutes.Screen
+        name="NewTweet"
+        component={NewTweet}
+        options={{
+          headerShown: false,
         }}
       />
     </NavRoutes.Navigator>

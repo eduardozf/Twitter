@@ -13,7 +13,7 @@ import NavBar from '../../components/NavBar';
 const Main: React.FC = () => {
   const navigation = useNavigation();
   const [tweets, setTweets] = useState<ITweetData[]>([]);
-  const { user, isAuthenticated, Logout } = useContext(AuthContext);
+  const { user, isAuthenticated } = useContext(AuthContext);
 
   useEffect(() => {
     if (!isAuthenticated) return;
@@ -32,7 +32,6 @@ const Main: React.FC = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#ebebeb" />
-      {console.log({ isAuthenticated })}
       {isAuthenticated && (
         <>
           <Container>
@@ -49,9 +48,7 @@ const Main: React.FC = () => {
           </Container>
           <TweetBtn
             onPress={() => {
-              console.log('Pressed New Tweet Button');
-              Logout();
-              navigation.navigate('Login');
+              navigation.navigate('NewTweet');
             }}
           />
         </>

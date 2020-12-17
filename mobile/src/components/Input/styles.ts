@@ -1,8 +1,13 @@
 import styled from 'styled-components/native';
 
-export const TextInput = styled.TextInput`
-  border: 1px solid #aaa;
+interface Porps {
+  isFocused: boolean;
+}
+
+export const TextInput = styled.TextInput<Porps>`
+  border: 1px solid ${props => (props.isFocused ? '#1DA1F2' : '#aaa')};
   margin: 4px 0;
+  border-radius: 4px;
 
   height: 40px;
 `;

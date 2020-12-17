@@ -3,6 +3,8 @@ import React, {
   useRef,
   useImperativeHandle,
   forwardRef,
+  useState,
+  useCallback,
 } from 'react';
 import { TextInputProps } from 'react-native';
 import { useField } from '@unform/core';
@@ -26,6 +28,8 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   reference,
 ) => {
   const inputElementRef = useRef<any>(null);
+
+  const [isFocused, setIsFocused] = useState(false);
 
   const { registerField, defaultValue = '', fieldName, error } = useField(name);
   const inputValueRef = useRef<InputValueReference>({ value: defaultValue });
@@ -52,10 +56,21 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
     });
   }, []);
 
+  const handleFocus = useCallback(() => {
+    setIsFocused(true);
+  }, []);
+
+  const handleBlur = useCallback(() => {
+    setIsFocused(false);
+  }, []);
+
   return (
     <TextInput
       ref={inputElementRef}
       defaultValue={defaultValue}
+      isFocused={isFocused}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
       onChangeText={value => {
         inputValueRef.current.value = value;
       }}

@@ -22,7 +22,7 @@ const SessionRoute = Router();
 
 SessionRoute.post('/', async (req, res) => {
   const { email, password } = req.body;
-
+  console.log("▶ New session")
   const repo = getRepository(Users);
   const user = await repo.findOne({ where: { email } }) as Users;
   if (!user) {
