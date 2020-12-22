@@ -19,11 +19,6 @@ export const Container = styled.View`
   transform: translate(0, -80px);
 `;
 
-export const FormContainer = styled.View`
-  flex-direction: column;
-  width: 60%;
-`;
-
 export const Span = styled.Text`
   font-size: 16px;
   color: #777;
@@ -31,6 +26,12 @@ export const Span = styled.Text`
 
 export const Header = styled.View`
   margin-bottom: 6px;
+`;
+
+export const FormContainer = styled.View`
+  flex-direction: column;
+  width: 60%;
+  margin-bottom: 10px;
 `;
 
 export const Footer = styled.View`

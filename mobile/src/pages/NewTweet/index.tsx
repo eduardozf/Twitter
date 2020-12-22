@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+/* eslint-disable react/jsx-indent, prettier/prettier */
 import React, { useContext, useCallback, useState } from 'react';
 import { View, ScrollView } from 'react-native';
 
@@ -7,6 +7,7 @@ import MIcon from 'react-native-vector-icons/MaterialIcons';
 
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../context/AuthContext';
+import { TweetsContext } from '../../context/TweetsContext';
 import api from '../../services/api';
 
 import {
@@ -35,14 +36,15 @@ interface Content {
 const NewTweet: React.FC = () => {
   const navigation = useNavigation();
   const { user } = useContext(AuthContext);
+  const { HandleNewTweet } = useContext(TweetsContext);
   const [inputContent, setInputContent] = useState(String);
 
   const handlePostTweet = useCallback(async (content: Content) => {
     await api.post('/tweets/new', { content }).then(response => {
-      console.log(response);
-      /* handleNewTweet(response.data); */
-    })
+      HandleNewTweet(response.data);
+    });
   }, []);
+
   return (
     <Container>
       <HeaderContainer>
@@ -54,11 +56,17 @@ const NewTweet: React.FC = () => {
           >
             <Icon name="x" size={24} color="#1da1f2" />
           </BackButton>
-        ) : <View />}
+        ) : (
+            <View />
+          )}
         <TweetButton
           onPress={() => {
-            handlePostTweet({ description: inputContent, image: null, video: null });
-            navigation.goBack()
+            handlePostTweet({
+              description: inputContent,
+              image: null,
+              video: null,
+            });
+            navigation.goBack();
           }}
         >
           <TweetButtonText>Tweetar</TweetButtonText>

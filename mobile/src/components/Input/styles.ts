@@ -9,5 +9,5 @@ export const TextInput = styled.TextInput<Porps>`
   margin: 4px 0;
   border-radius: 4px;
 
-  height: 40px;
+  padding: 5px 4px;
 `;
