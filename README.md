@@ -42,8 +42,11 @@
 
 <!-- ABOUT THE PROJECT -->
 ## Sobre o projeto
+<p align="left">
+  <img src="images/MainPage.png" width="650px"/>
+  <img src="images/app.gif" width="250px"/>
+</p>
 
-[![Product Name Screen Shot][product-screenshot]](https://eduardozf.github.io/)
 
 💡 Estou começando agora no desenvolvimento com o react e node, para treinar resolvi recriar algumas funcionalidade do Twitter.
 
@@ -53,6 +56,12 @@
 * [Typescript](https://www.typescriptlang.org/)
 * [Express](https://expressjs.com/)
 * [Axios](https://www.axios.com/)
+##### Mobile
+* [React-Native](https://reactnative.dev/)
+* [React-Navigation](https://reactnavigation.org/)
+* [React-Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
+* [Axios](https://www.axios.com/)
+* [Unform](https://github.com/Rocketseat/unform)
 
 <!-- GETTING STARTED -->
 ## Iniciando
@@ -133,3 +142,4 @@ Eduardo Zotelli Ferraz - eduardozf1@gmail.com
 [license-shield]: https://img.shields.io/github/license/eduardozf/Twitter.svg?style=flat-square
 [license-url]: https://github.com/eduardozf/Twitter/blob/main/LICENSE.txt
 [product-screenshot]: images/MainPage.png
+[product-gif]: images/app.gif
