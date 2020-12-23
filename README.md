@@ -44,7 +44,7 @@
 ## Sobre o projeto
 <p align="left">
   <img src="images/MainPage.png" width="600px"/>
-  <img src="images/app.gif" width="250px"/>
+  <img src="images/app.gif" width="200px"/>
 </p>
 
 
