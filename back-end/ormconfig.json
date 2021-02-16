@@ -6,13 +6,12 @@
   "password": "twitter",
   "database": "twitter",
   "migrations": [
-    "src/database/migrations/**/*.ts"
+    "./src/shared/infra/typeorm/migrations/*.ts"
   ],
   "entities": [
-    "src/database/models/**/*.ts"
+    "./src/modules/**/infra/typeorm/entities/*.ts"
   ],
   "cli": {
-    "migrationsDir": "src/database/migrations",
-    "entitiesDir": "src/database/models"
+    "migrationsDir": "./src/shared/infra/typeorm/migrations"
   }
 }
