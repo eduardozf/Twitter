@@ -17,7 +17,7 @@
   <p align="center">
     Um projeto para estudos!
     <br />
-    ⚠ Projeto em andamento, portanto algumas funcionalidades estarão indisponíveis.
+    ⚠ Projeto em andamento, portanto algumas funcionalidades estão indisponíveis.
     <br />
     <a href="https://eduardozf.github.io/">Ver demo</a>
     ·
@@ -43,8 +43,8 @@
 <!-- ABOUT THE PROJECT -->
 ## Sobre o projeto
 <p align="left">
-  <img src="images/MainPage.png" width="650px"/>
-  <img src="images/app.gif" width="250px"/>
+  <img src="images/MainPage.png" width="600px"/>
+  <img src="images/app.gif" width="200px"/>
 </p>
 
 
