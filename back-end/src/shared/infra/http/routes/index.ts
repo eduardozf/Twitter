@@ -1,16 +1,13 @@
 import { Router } from 'express';
-import UsersRoute from '@modules/users/infra/http/controllers/UserController';
-import TweetsRoute from '@modules/tweets/infra/http/controllers/TweetController';
-import SessionController from '@modules/users/infra/http/controllers/SessionController';
-import AuthMiddleware from '@modules/users/infra/http/middlewares/AuthMiddleware';
+
+import usersRoutes from '@modules/users/infra/http/routes/users.routes';
+import sessionsRoutes from '@modules/users/infra/http/routes/sessions.routes';
+import tweetsRoutes from '@modules/tweets/infra/http/routes/tweets.routes';
 
 const routes = Router();
 
-routes.use('/session', SessionController);
-
-routes.use(AuthMiddleware);
-
-routes.use('/users', UsersRoute);
-routes.use('/tweets', TweetsRoute);
+routes.use('/users', usersRoutes);
+routes.use('/sessions', sessionsRoutes);
+routes.use('/tweets', tweetsRoutes);
 
 export default routes;

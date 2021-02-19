@@ -1,44 +1,47 @@
-import { getRepository } from 'typeorm';
-import { hash } from 'bcryptjs';
-import Users from '../infra/typeorm/models/Users';
+import AppError from '@shared/errors/AppError';
+import IUsersRepository from '../repositories/IUsersRepository';
+import IHashProvider from '../providers/HashProvider/models/IHashProvider';
+import User from '../infra/typeorm/entities/User';
 
 interface IRequest {
-  screen_name: string;
+  screenName: string;
   username: string;
   email: string;
   password: string;
 }
-class CreateUser {
+class CreateUserService {
+  // eslint-disable-next-line no-useless-constructor
+  constructor(
+    private usersRepository: IUsersRepository,
+    private hashProvider: IHashProvider,
+  ) {}
+
   public async execute({
-    screen_name,
+    screenName,
     username,
     email,
     password,
-  }: IRequest): Promise<Users> {
-    const repo = getRepository(Users);
+  }: IRequest): Promise<User> {
+    // Check if username is already in use
+    const usernameExists = await this.usersRepository.findByUsername(username);
+    if (usernameExists) throw new AppError('Username is already in use');
 
-    // Check if username and email is already in use
-    const usernameExists = await repo.findOne({ where: { username } });
-    if (usernameExists) {
-      throw new Error('Username is already in use.');
-    }
-    const emailExists = await repo.findOne({ where: { email } });
-    if (emailExists) {
-      throw new Error('E-mail is already in use.');
-    }
+    // Check if email is already in use
+    const emailExists = await this.usersRepository.findByEmail(email);
+    if (emailExists) throw new AppError('E-mail is already in use');
+
     // Generate a hash of password
-    const passwordHash = await hash(password, 10);
+    const passwordHash = await this.hashProvider.generate(password);
 
-    const user = repo.create({
-      screen_name,
+    const user = await this.usersRepository.create({
+      screenName,
       username,
       email,
       password: passwordHash,
-      avatar: `https://api.hello-avatar.com/adorables/140/@${username}`,
     });
-    await repo.save(user);
+
     return user;
   }
 }
 
-export default CreateUser;
+export default CreateUserService;

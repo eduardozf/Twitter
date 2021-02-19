@@ -1,11 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
+import AppError from '@shared/errors/AppError';
 import jwt from 'jsonwebtoken';
-import 'dotenv';
+import AuthConfig from '@config/auth';
 
 interface IToken {
-  userId: string;
   iat: Date;
   exp: Date;
+  sub: string;
 }
 
 export default (
@@ -16,18 +17,22 @@ export default (
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
-    throw new Error('Token is missing.');
+    throw new AppError('Token is missing', 401);
   }
 
   const [, token] = authHeader.split(' ');
 
   try {
-    const payload = jwt.verify(token, process.env.APP_SECRET as string);
+    const decodedToken = jwt.verify(token, AuthConfig.jwt.secret) as IToken;
 
-    const { userId } = payload as IToken;
-    req.userId = userId;
-    return next();
+    const { sub } = decodedToken;
+
+    req.user = {
+      id: sub,
+    };
+
+    next();
   } catch {
-    return res.status(401).json('Invalid Token!');
+    throw new AppError('Invalid Token', 401);
   }
 };
