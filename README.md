@@ -17,8 +17,6 @@
   <p align="center">
     Um projeto para estudos!
     <br />
-    ⚠ Projeto em andamento, portanto algumas funcionalidades estão indisponíveis.
-    <br />
     <a href="https://eduardozf.github.io/">Ver demo</a>
     ·
     <a href="https://github.com/eduardozf/Twitter/issues">Reportar Bug</a>
