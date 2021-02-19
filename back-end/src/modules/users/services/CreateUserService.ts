@@ -1,3 +1,4 @@
+import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 import IUsersRepository from '../repositories/IUsersRepository';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
@@ -9,10 +10,13 @@ interface IRequest {
   email: string;
   password: string;
 }
+
+@injectable()
 class CreateUserService {
-  // eslint-disable-next-line no-useless-constructor
   constructor(
+    @inject('UsersRepository')
     private usersRepository: IUsersRepository,
+    @inject('HashProvider')
     private hashProvider: IHashProvider,
   ) {}
 

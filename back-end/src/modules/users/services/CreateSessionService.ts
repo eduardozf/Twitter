@@ -1,3 +1,4 @@
+import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 import { sign } from 'jsonwebtoken';
 import AuthConfig from '@config/auth';
@@ -15,10 +16,12 @@ interface IResponse {
   user: User;
 }
 
+@injectable()
 export default class CreateSessionService {
-  // eslint-disable-next-line no-useless-constructor
   constructor(
+    @inject('UsersRepository')
     private usersRepository: IUsersRepository,
+    @inject('HashProvider')
     private hashProvider: IHashProvider,
   ) {}
 

@@ -1,12 +1,15 @@
-import ICreateTweetDTO from '@modules/tweets/dtos/ICreateTweetDTO';
-
+import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
+import ICreateTweetDTO from '@modules/tweets/dtos/ICreateTweetDTO';
 import ITweetsRepository from '../repositories/ITweetsRepository';
 import Tweet from '../infra/typeorm/entities/Tweet';
 
+@injectable()
 class CreateTweetService {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(private tweetsRepository: ITweetsRepository) {}
+  constructor(
+    @inject('TweetsRepository')
+    private tweetsRepository: ITweetsRepository,
+  ) {}
 
   public async execute({
     owner_id,
