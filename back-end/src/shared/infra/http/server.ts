@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'reflect-metadata';
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import AppError from '@shared/errors/AppError';
