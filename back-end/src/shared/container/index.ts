@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import { container } from 'tsyringe';
 
 import '@modules/users/providers';
@@ -15,6 +14,6 @@ container.registerSingleton<IUsersRepository>(
 );
 
 container.registerSingleton<ITweetsRepository>(
-  'TweetssRepository',
+  'TweetsRepository',
   TweetsRepository,
 );
