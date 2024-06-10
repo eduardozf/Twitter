@@ -16,8 +16,6 @@
 
   <p align="center">
     Um projeto para estudos!
-    <br />
-    <a href="https://github.com/eduardozf/Twitter/issues">Reportar Bug</a>
   </p>
 </p>
 
