@@ -9,7 +9,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/eduardozf/Twitter">
-    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.6cZtBQhyBG2EFyhpW2iVlAHaHa%26pid%3DApi&f=1" alt="Logo" width="80" height="80">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124021.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Twitter</h3>
@@ -17,8 +17,6 @@
   <p align="center">
     Um projeto para estudos!
     <br />
-    <a href="https://eduardozf.github.io/">Ver demo</a>
-    ·
     <a href="https://github.com/eduardozf/Twitter/issues">Reportar Bug</a>
   </p>
 </p>
